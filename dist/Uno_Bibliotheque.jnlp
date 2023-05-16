@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Uno_Bibliotheque.jnlp">
+  <information>
+    <title>Uno_Bibliotheque</title>
+    <vendor>Mes documants</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Uno_Bibliotheque.jar" size="1037765" download="eager" />
+    <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
+    <jar href="lib\adapter-0.2.0.jar" size="12415" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
+    <jar href="lib\jrt-fs.jar" size="110916" download="eager" />
+    <jar href="lib\materialfx-11.13.5.jar" size="3226858" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.40-bin.jar" size="990927" download="eager" />
+    <jar href="lib\virtualizedfx-11.2.6.1.jar" size="64010" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Uno_Bibliotheque" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="uno_bibliotheque.Uno_Bibliotheque"  name="Uno_Bibliotheque" />
+  <update check="always"/>
+</jnlp>

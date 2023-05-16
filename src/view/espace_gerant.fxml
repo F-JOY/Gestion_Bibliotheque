@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.gerantController">
+   <children>
+      <AnchorPane prefHeight="641.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);">
+         <children>
+            <BorderPane fx:id="mainborderPane" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="33.0" prefWidth="1187.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="reduire_btn" alignment="BOTTOM_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1101.0" mnemonicParsing="false" onMouseClicked="#reduire" onMouseEntered="#blue_color" onMouseExited="#initial_color" prefHeight="24.0" prefWidth="28.0" style="-fx-background-color: transparent;" textAlignment="CENTER" AnchorPane.rightAnchor="58.0">
+                           <graphic>
+                              <FontAwesomeIconView fx:id="minus_icon" glyphName="MINUS" size="13" strokeMiterLimit="0.0" textAlignment="JUSTIFY" />
+                           </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="close_btn" layoutX="758.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#close" onMouseEntered="#red_color" onMouseExited="#initialcolse_color" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CLOSE" size="15" fx:id="x_icon" />
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ImageView fx:id="max_min_btn" fitHeight="15.0" fitWidth="18.0" layoutX="1136.0" layoutY="5.0" onMouseClicked="#max_min_screen" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="36.0">
+                           <image>
+                              <Image url="@../images/maximize_icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="4.0" />
+                     </BorderPane.margin>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIconView glyphName="USER" layoutX="64.0" layoutY="94.0" size="80" text="" />
+                              <Label layoutX="32.0" layoutY="107.0" text="Bienvenue">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIconView fx:id="btn_editprofil" accessibleRole="BUTTON" glyphName="EDIT" layoutX="127.0" layoutY="34.0" onMouseClicked="#show_editpan" size="18" text="">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></FontAwesomeIconView>
+                              <Label fx:id="userName_label" layoutX="54.0" layoutY="147.0" text="nom_utilisateur">
+                                 <font>
+                                    <Font name="Lucida Sans Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="acc_btn" layoutX="13.0" layoutY="203.0" mnemonicParsing="false" onMouseClicked="#show_acc" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Accueil">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <FontAwesomeIconView glyphName="HOME" layoutX="20.0" layoutY="231.0" size="25" />
+                              <Button fx:id="biblio_btn" layoutX="13.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#show_boblio" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="     Bibliothecaires">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="abn_btn" layoutX="13.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#show_abn" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Lecteurs">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <FontAwesomeIconView glyphName="USERS" layoutX="19.0" layoutY="333.0" size="25" />
+                              <Button fx:id="sanc_btn" layoutX="13.0" layoutY="359.0" mnemonicParsing="false" onMouseClicked="#show_sanc" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Sanctions">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="17.0" layoutY="602.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+                              <Label fx:id="log_out_btn" layoutX="22.0" layoutY="615.0" onMouseClicked="#log_out" prefHeight="31.0" prefWidth="130.0" text="Deconnexion" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="22.0">
+                                 <font>
+                                    <Font name="Lucida Sans Demibold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="SIGN_OUT" size="25" wrappingWidth="24.214284896850586" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                              <Line endX="100.0" layoutX="76.0" layoutY="176.0" startX="-54.0" />
+                              <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="11.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icon_bibliothecaire.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="20.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/snct_prev_ui.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane opacity="0.89" prefHeight="675.0" prefWidth="565.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="2.0" left="4.0" right="4.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <AnchorPane fx:id="Acc_pan" layoutX="12.0" layoutY="14.0" prefHeight="627.0" prefWidth="979.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="14.0" prefHeight="627.0" prefWidth="979.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="254.0" layoutY="39.0" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Espace Gestionnaire" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="20.0">
+                                       <font>
+                                          <Font name="Arial Black" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="12.0" layoutY="100.0" prefHeight="123.0" prefWidth="951.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="100.0">
+                                       <children>
+                                          <AnchorPane prefHeight="140.0" prefWidth="202.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;">
+                                             <children>
+                                                <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="179.0" text="Nombre d'employeurs">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="totalBiblio_label" alignment="CENTER" layoutX="133.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="12">
+                                                   <font>
+                                                      <Font name="Arial Black" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="64.0" fitWidth="92.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/icon_bibliothecaire.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="50.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <AnchorPane maxWidth="200.0" prefHeight="104.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;">
+                                             <children>
+                                                <Label alignment="CENTER" layoutX="5.0" layoutY="82.0" prefHeight="31.0" prefWidth="182.0" text="Nombre de Sanctions">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="totalSanction_label" layoutX="112.0" layoutY="14.0" prefHeight="28.0" prefWidth="74.0" text="1005 Dz">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/snct_prev_ui.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="50.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="113.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;">
+                                             <children>
+                                                <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0" text="Nombre de Ouvrages" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="82.0">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="totalBokk_label" alignment="CENTER" layoutX="133.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="100K">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <FontAwesomeIconView glyphName="BOOK" layoutX="14.0" layoutY="65.0" size="60" />
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="50.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <AnchorPane maxWidth="200.0" prefHeight="104.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;">
+                                             <children>
+                                                <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0" text="Nombre d'inscrits">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="totalAbonné_label" layoutX="132.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="1005">
+                                                   <font>
+                                                      <Font name="Arial Black" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <FontAwesomeIconView glyphName="USERS" layoutX="14.0" layoutY="65.0" size="60" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <LineChart fx:id="statistique_cart" layoutX="23.0" layoutY="277.0" prefHeight="336.0" prefWidth="950.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="biblio_pan" prefHeight="627.0" prefWidth="979.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="10.0" layoutY="97.0" prefHeight="526.0" prefWidth="965.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0">
+                                 <children>
+                                    <JFXTabPane prefHeight="550.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <tabs>
+                                          <Tab text="Liste des Bibliotècaires                                                                ">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="248.0" layoutY="14.0" prefHeight="35.0" prefWidth="470.0" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-radius: 18px;" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="247.0">
+                                                         <children>
+                                                            <TextField fx:id="rechercheBiblio_txt" layoutX="2.0" layoutY="2.0" prefHeight="37.0" prefWidth="431.0" promptText="Recherche..." style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="1.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="15.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <FontAwesomeIconView fx:id="rechercheBiblio_btn" accessibleRole="BUTTON" glyphName="SEARCH" layoutX="437.0" layoutY="24.0" onMouseClicked="#rechercheBiblio" size="20" AnchorPane.rightAnchor="14.428571701049805">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </FontAwesomeIconView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <TableView fx:id="biblio_tab" layoutX="31.0" layoutY="60.0" prefHeight="415.0" prefWidth="903.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="60.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="id_biblio_col" prefWidth="100.0" text="_ID" />
+                                                          <TableColumn fx:id="nom_biblio_col" prefWidth="100.0" text="Nom" />
+                                                            <TableColumn fx:id="prenom_biblio_col" prefWidth="100.0" text="Prénom" />
+                                                            <TableColumn fx:id="adresse_biblio_col" prefWidth="100.0" text="Adresse" />
+                                                            <TableColumn fx:id="numTel_biblio_col" prefWidth="100.0" text="Numéro_tel" />
+                                                            <TableColumn fx:id="email_biblio_col" prefWidth="100.0" text="Email" />
+                                                            <TableColumn fx:id="nomUtilisateur_biblio_col" prefWidth="100.0" text="Nom_utilisateur" />
+                                                            <TableColumn fx:id="passWord_biblio_col" prefWidth="100.0" text="Mot_passe" />
+                                                            <TableColumn fx:id="modifier_biblio_col" prefWidth="102.0" text="Edit" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                          <Tab text="Ajouter Bibliotécaires                                                                  ">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="26.0" layoutY="27.0" prefHeight="362.0" prefWidth="479.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-width: 3px; -fx-border-radius: 12px;" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="460.0">
+                                                         <children>
+                                                            <Label layoutX="26.0" layoutY="22.0" prefHeight="23.0" prefWidth="87.0" text="Nom :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="nomBiblio_txt" layoutX="13.0" layoutY="44.0" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="16.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="258.0" layoutY="22.0" prefHeight="23.0" prefWidth="87.0" text="Prénom :" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="137.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="prenomBiblio_txt" layoutX="251.0" layoutY="44.0" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="26.0" layoutY="99.0" prefHeight="23.0" prefWidth="87.0" text="Adresse :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="adresseBiblio_txt" layoutX="17.0" layoutY="122.0" prefHeight="40.0" prefWidth="442.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="26.0" layoutY="181.0" prefHeight="23.0" prefWidth="170.0" text="Numéro_telephone:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="numeroTelBiblio_txt" layoutX="19.0" layoutY="203.0" prefHeight="40.0" prefWidth="442.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="26.0" layoutY="257.0" prefHeight="23.0" prefWidth="87.0" text="Email :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="emailBiblio_txt" layoutX="19.0" layoutY="280.0" prefHeight="40.0" prefWidth="442.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <Button fx:id="ajouterBiblio_btn" alignment="CENTER" layoutX="378.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#ajouterBiblio" prefHeight="44.0" prefWidth="248.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 20px;" text="Ajouter" AnchorPane.leftAnchor="378.0" AnchorPane.rightAnchor="339.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="20.0" />
+                                                         </font>
+                                                      </Button>
+                                                      <Label alignment="CENTER" layoutX="58.0" layoutY="15.0" prefHeight="17.0" prefWidth="145.0" style="-fx-background-color: white;" text="Information Personnel :">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <AnchorPane layoutX="518.0" layoutY="27.0" prefHeight="362.0" prefWidth="424.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-width: 3px; -fx-border-radius: 12px;" AnchorPane.rightAnchor="23.0">
+                                                         <children>
+                                                            <Label layoutX="66.0" layoutY="53.0" prefHeight="23.0" prefWidth="210.0" text="Nom utilisateur:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="userNameBiblio_txt" layoutX="59.0" layoutY="75.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="66.0" layoutY="143.0" prefHeight="23.0" prefWidth="195.0" text="Mot de passe :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="66.0" layoutY="234.0" prefHeight="23.0" prefWidth="216.0" text="Confirmer mot de passe :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label alignment="CENTER" layoutX="19.0" layoutY="-8.0" prefHeight="17.0" prefWidth="153.0" style="-fx-background-color: white;" text="Configuration du compte :">
+                                                               <font>
+                                                                  <Font name="Arial" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <PasswordField fx:id="passwordBiblio_txt" layoutX="59.0" layoutY="166.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                            </PasswordField>
+                                                            <PasswordField fx:id="confirmePasswordBiblio_txt" layoutX="59.0" layoutY="262.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                            </PasswordField>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" layoutX="255.0" layoutY="23.0" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Gestion des Bibliothecaires" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="abn_pan" prefHeight="627.0" prefWidth="979.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="10.0" layoutY="97.0" prefHeight="487.0" prefWidth="965.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0">
+                                 <children>
+                                    <JFXTabPane prefHeight="550.0" prefWidth="965.0" AnchorPane.bottomAnchor="-68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <tabs>
+                                          <Tab text="Liste des Abonnées                                                                      ">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="452.0" prefWidth="965.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="248.0" layoutY="14.0" prefHeight="35.0" prefWidth="470.0" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-radius: 18px;" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="247.0">
+                                                         <children>
+                                                            <TextField fx:id="recherchAbonnée_txt" layoutX="2.0" layoutY="2.0" prefHeight="37.0" prefWidth="431.0" promptText="Recherche..." style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="1.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="15.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <FontAwesomeIconView fx:id="rechercheAbonnée_btn" accessibleRole="BUTTON" glyphName="SEARCH" layoutX="437.0" layoutY="24.0" onMouseClicked="#rechercheAbonnée" size="20" AnchorPane.rightAnchor="14.428571701049805">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </FontAwesomeIconView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <TableView fx:id="abonné_tab" layoutX="5.0" layoutY="58.0" minHeight="-Infinity" prefHeight="422.0" prefWidth="949.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="58.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="id_abonné_col" text="_ID" />
+                                                            <TableColumn fx:id="nom_abonné_col" text="Nom" />
+                                                            <TableColumn fx:id="prenom_abonné_col" text="Prénom" />
+                                                            <TableColumn fx:id="adresse_abonné_col" text="Adresse" />
+                                                            <TableColumn fx:id="dateNaiss_abonné_col" text="Date_naissance" />
+                                                            <TableColumn fx:id="numTel_abonné_col" text="Numéro_tel" />
+                                                            <TableColumn fx:id="email_abonné_col" text="Email" />
+                                                            <TableColumn fx:id="type_abonné_col" text="Type" />
+                                                            <TableColumn fx:id="paiement_col" text="paiement" />
+                                                            <TableColumn fx:id="modifsupp_col" text="paiement" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab text="Ajouter Abonnée                                                                         ">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="965.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="26.0" layoutY="27.0" prefHeight="362.0" prefWidth="479.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-width: 3px; -fx-border-radius: 12px;" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="460.0">
+                                                         <children>
+                                                            <Label layoutX="29.0" layoutY="94.0" prefHeight="23.0" prefWidth="87.0" text="Nom :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="nomAbonné_txt" layoutX="22.0" layoutY="116.0" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="22.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="267.0" layoutY="94.0" prefHeight="23.0" prefWidth="85.0" text="Prénom :" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="127.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="prénomAbonné_txt" layoutX="254.0" layoutY="116.0" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="29.0" layoutY="253.0" prefHeight="23.0" prefWidth="180.0" text="Numéro_telephone :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="numeroTelAbonné_txt" layoutX="25.0" layoutY="276.0" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="25.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="264.0" layoutY="253.0" prefHeight="23.0" prefWidth="170.0" text="Adresse:" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="45.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="adresseAbonné_txt" layoutX="261.0" layoutY="276.0" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="263.0" layoutY="175.0" prefHeight="23.0" prefWidth="87.0" text="Email :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="emailAbonné_txt" layoutX="258.0" layoutY="198.0" prefHeight="40.0" prefWidth="201.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="21.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="29.0" layoutY="175.0" prefHeight="23.0" prefWidth="149.0" text="Date naissance :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField layoutX="29.0" layoutY="39.0" prefHeight="40.0" prefWidth="433.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="21.0" />
+                                                            <Label layoutX="37.0" layoutY="14.0" prefHeight="23.0" prefWidth="136.0" text="ID_Utilisateur :" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="306.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <AnchorPane layoutX="25.0" layoutY="204.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="22.0">
+                                                               <children>
+                                                                  <DatePicker fx:id="dateNaissAbonné_txt" layoutX="8.0" layoutY="5.0" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: transparent;" />
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <Button fx:id="ajouterAbonné_btn" alignment="CENTER" layoutX="378.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#ajouterAbonné" prefHeight="44.0" prefWidth="248.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 20px;" text="Ajouter" AnchorPane.leftAnchor="378.0" AnchorPane.rightAnchor="339.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="20.0" />
+                                                         </font>
+                                                      </Button>
+                                                      <Label alignment="CENTER" layoutX="58.0" layoutY="15.0" prefHeight="17.0" prefWidth="145.0" style="-fx-background-color: white;" text="Information Personnel :">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <AnchorPane layoutX="518.0" layoutY="27.0" prefHeight="362.0" prefWidth="424.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-width: 3px; -fx-border-radius: 12px;" AnchorPane.rightAnchor="23.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutX="33.0" layoutY="-8.0" prefHeight="17.0" prefWidth="139.0" style="-fx-background-color: white;" text="Typed'Abonnement">
+                                                               <font>
+                                                                  <Font name="Arial" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <RadioButton fx:id="etudInterne_rdBtn" layoutX="33.0" layoutY="41.0" mnemonicParsing="false" onAction="#panneauType" text="Etudiant Interne">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="typeAbn" />
+                                                               </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="etudExterne_rdBtn" layoutX="33.0" layoutY="92.0" mnemonicParsing="false" onAction="#panneauType" text="Etudiant Externe" toggleGroup="$typeAbn">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="enseignant_rdBtn" layoutX="33.0" layoutY="142.0" mnemonicParsing="false" onAction="#panneauType" text="Ensiegnant" toggleGroup="$typeAbn">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </RadioButton>
+                                                            <AnchorPane fx:id="paiment_interne_pan" layoutX="23.0" layoutY="223.0" prefHeight="80.0" prefWidth="383.0" style="-fx-background-color: transparent; -fx-border-color: black;" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="18.0">
+                                                               <children>
+                                                                  <CheckBox fx:id="paiement_interne_checkBox" layoutX="15.0" layoutY="6.0" mnemonicParsing="false" />
+                                                                  <TextArea layoutX="36.0" layoutY="4.0" prefHeight="73.0" prefWidth="329.0" style="-fx-background-color: transparent;" text="Cet abonnée en tant que étudiant interne a payé une&#10; somme forfataire pour avoir accés a tous les services&#10; de notre bibliotheque">
+                                                                     <font>
+                                                                        <Font name="Arial" size="13.0" />
+                                                                     </font>
+                                                                  </TextArea>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane fx:id="paiement_externe_pan" layoutX="26.0" layoutY="223.0" prefHeight="75.0" prefWidth="380.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 0px;" visible="false" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="21.0">
+                                                               <children>
+                                                                  <CheckBox fx:id="paiement_externe_checkBox" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="15.0" textAlignment="JUSTIFY" />
+                                                                  <TextArea layoutX="35.0" layoutY="1.0" prefHeight="80.0" prefWidth="0.0" style="-fx-background-color: transparent;" text=" Cet abonnée en tant que étudiant externe a payé&#10; les frais d'inscription pour avoir accés aux &#10; services de notre bibliotheque" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="1.0">
+                                                                     <font>
+                                                                        <Font name="Arial" size="13.0" />
+                                                                     </font>
+                                                                  </TextArea>
+                                                               </children></AnchorPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" layoutX="255.0" layoutY="23.0" prefHeight="51.0" prefWidth="475.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Gestion des Abonnements" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="sanc_pan" layoutX="124.0" layoutY="56.0" onMouseClicked="#show_sanc" prefHeight="627.0" prefWidth="979.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="99.0" layoutY="88.0" prefHeight="627.0" prefWidth="979.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <JFXTabPane layoutX="41.0" layoutY="95.0" prefHeight="513.0" prefWidth="894.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+                                       <tabs>
+                                          <Tab text="Les Sanctions                                                             ">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="607.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="124.0" layoutY="14.0" prefHeight="476.0" prefWidth="894.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <TableView fx:id="sanction_tab" layoutX="457.0" layoutY="15.0" prefHeight="412.0" prefWidth="383.0" AnchorPane.leftAnchor="457.0" AnchorPane.rightAnchor="53.0">
+                                                              <columns>
+                                                                <TableColumn fx:id="duréeRetard_col" prefWidth="149.0" text="Durée de retard" />
+                                                                <TableColumn fx:id="duréeSanction_col" prefWidth="144.0" text="Durée de Sanction" />
+                                                                  <TableColumn fx:id="modifierSanction_col" prefWidth="44.0" text="edit" />
+                                                                  <TableColumn fx:id="supprimerSanction_col" prefWidth="45.0" text="delete" />
+                                                              </columns>
+                                                            </TableView>
+                                                            <Label alignment="CENTER" layoutX="51.0" layoutY="14.0" prefHeight="51.0" prefWidth="321.0" style="-fx-background-radius: 25px; -fx-text-fill: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Ajouter Sanction" AnchorPane.leftAnchor="51.0">
+                                                               <font>
+                                                                  <Font name="Arial Black" size="30.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="51.0" layoutY="84.0" prefHeight="24.0" prefWidth="356.0" text="Pour une durée de retard de :" AnchorPane.leftAnchor="51.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <AnchorPane layoutX="168.0" layoutY="118.0" prefHeight="34.0" prefWidth="123.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="168.0">
+                                                               <children>
+                                                                  <TextField fx:id="retard_txt" layoutX="2.0" layoutY="2.0" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="2.0">
+                                                                     <padding>
+                                                                        <Insets left="20.0" />
+                                                                     </padding>
+                                                                     <font>
+                                                                        <Font name="Arial Black" size="12.0" />
+                                                                     </font>
+                                                                  </TextField>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <Label layoutX="51.0" layoutY="221.0" prefHeight="24.0" prefWidth="356.0" text="La durée de la sanction est :" AnchorPane.leftAnchor="51.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Button fx:id="ajouterSanction_btn" alignment="CENTER" layoutX="156.0" layoutY="396.0" mnemonicParsing="false" onMouseClicked="#ajouterSanction" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Enregistrer" textFill="WHITE" AnchorPane.leftAnchor="156.0">
+                                                               <font>
+                                                                  <Font name="Segoe UI Black" size="16.0" />
+                                                               </font>
+                                                            </Button>
+                                                            <JFXRadioButton fx:id="retard_jour_RDbtn" alignment="CENTER_LEFT" graphicTextGap="1.0" layoutX="94.0" layoutY="175.0" text="Jours" textAlignment="CENTER" textFill="#4edff5" AnchorPane.leftAnchor="98.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="15.0" />
+                                                               </font>
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="calender" />
+                                                               </toggleGroup>
+                                                            </JFXRadioButton>
+                                                            <JFXRadioButton fx:id="retard_semaine_RDbtn" alignment="CENTER_LEFT" graphicTextGap="1.0" layoutX="182.0" layoutY="175.0" text="Semaines" textAlignment="CENTER" textFill="#4edff5" toggleGroup="$calender" AnchorPane.leftAnchor="182.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="15.0" />
+                                                               </font>
+                                                            </JFXRadioButton>
+                                                            <JFXRadioButton fx:id="retard_mois_RDbtn" alignment="CENTER_LEFT" graphicTextGap="1.0" layoutX="295.0" layoutY="175.0" text="Mois" textAlignment="CENTER" textFill="#4edff5" toggleGroup="$calender" AnchorPane.leftAnchor="298.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="15.0" />
+                                                               </font>
+                                                            </JFXRadioButton>
+                                                            <AnchorPane layoutX="169.0" layoutY="266.0" prefHeight="34.0" prefWidth="123.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="169.0">
+                                                               <children>
+                                                                  <TextField fx:id="sanction_txt" layoutX="2.0" layoutY="2.0" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: transparent;">
+                                                                     <padding>
+                                                                        <Insets left="20.0" />
+                                                                     </padding>
+                                                                  </TextField>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <JFXRadioButton fx:id="sanction_jour_RDbtn" alignment="CENTER_LEFT" graphicTextGap="1.0" layoutX="95.0" layoutY="323.0" text="Jours" textAlignment="CENTER" textFill="#4edff5" AnchorPane.leftAnchor="98.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="15.0" />
+                                                               </font>
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="calender2" />
+                                                               </toggleGroup>
+                                                            </JFXRadioButton>
+                                                            <JFXRadioButton fx:id="sanction_semain_RDbtn" alignment="CENTER_LEFT" graphicTextGap="1.0" layoutX="182.0" layoutY="323.0" text="Semaines" textAlignment="CENTER" textFill="#4edff5" toggleGroup="$calender2" AnchorPane.leftAnchor="182.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="15.0" />
+                                                               </font>
+                                                            </JFXRadioButton>
+                                                            <JFXRadioButton fx:id="sanction_mois_RDbtn" alignment="CENTER_LEFT" graphicTextGap="1.0" layoutX="298.0" layoutY="323.0" text="Moins" textAlignment="CENTER" textFill="#4edff5" toggleGroup="$calender2" AnchorPane.leftAnchor="298.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="15.0" />
+                                                               </font>
+                                                            </JFXRadioButton>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                          <Tab text="Les Pénalités enregistrer                                             ">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="penalite_tab" layoutX="45.0" layoutY="57.0" prefHeight="363.0" prefWidth="770.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="pénalité_ID_emprunt_col" prefWidth="75.0" text="ID_emprunt" />
+                                                          <TableColumn fx:id="penalité_Date_emprunt_col" prefWidth="101.0" text="Date_emprunt" />
+                                                            <TableColumn fx:id="penalité_ID_Lecteur_col" prefWidth="112.0" text="ID_Lecteur" />
+                                                            <TableColumn fx:id="penalité_nomLecteur_col" prefWidth="102.0" text="Nom " />
+                                                            <TableColumn fx:id="penalité_prenomLecteur_col" minWidth="4.0" prefWidth="79.0" text="Prénom" />
+                                                            <TableColumn fx:id="debuPenalité_col" prefWidth="109.0" text="Debut_pénalité" />
+                                                            <TableColumn fx:id="finPenalité_col" prefWidth="116.0" text="Fin_pénalité" />
+                                                            <TableColumn fx:id="supprimerPenalité_col" prefWidth="75.0" text="DELETE" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" layoutX="255.0" layoutY="23.0" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Gestion des Sanctions" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="edit_pan" layoutX="30.0" layoutY="71.0" prefHeight="627.0" prefWidth="979.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="148.0" layoutY="125.0" prefHeight="472.0" prefWidth="684.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-radius: 15px; -fx-border-width: 3px;" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="125.0">
+                                 <children>
+                                    <Label layoutX="180.0" layoutY="41.0" prefHeight="23.0" prefWidth="207.0" text="Nom utilisateur :" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="300.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="userName_txt" layoutX="160.0" layoutY="64.0" prefHeight="47.0" prefWidth="364.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px; -fx-border-width: 2px;" text="nom_utilisateur" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="157.0">
+                                       <font>
+                                          <Font name="Arial" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </TextField>
+                                    <PasswordField fx:id="prePassword_txt" layoutX="160.0" layoutY="170.0" prefHeight="47.0" prefWidth="364.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px; -fx-border-width: 2px;" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="157.0" />
+                                    <PasswordField fx:id="newPassword_txt" layoutX="160.0" layoutY="277.0" prefHeight="47.0" prefWidth="364.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px; -fx-border-width: 2px;" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="157.0" />
+                                    <Button fx:id="updateAccount_btn" layoutX="271.0" layoutY="377.0" mnemonicParsing="false" onMouseDragged="#updateAccount" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 15px;" text="Enregistrer" AnchorPane.leftAnchor="271.0" AnchorPane.rightAnchor="267.0">
+                                       <font>
+                                          <Font name="Arial Black" size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="180.0" layoutY="147.0" prefHeight="23.0" prefWidth="224.0" text="Mot de passe (Ancienne):" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="277.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="175.0" layoutY="254.0" prefHeight="23.0" prefWidth="199.0" text="Nouveau Mot de passe :" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="298.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Gestion du Compte" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="346.0" layoutY="102.0" prefHeight="46.0" prefWidth="304.0" style="-fx-background-color: white; -fx-text-fill: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Modifier compte Gestionnaire" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="329.0">
+                                 <font>
+                                    <Font name="Arial Black" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

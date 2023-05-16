@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29 mars 2023, 14:39:33
+    Author     : Farah
+*/
+.p-pan {
+  -fx-app-background: cornsilk;
+  -fx-background-color: -fx-app-background;
+  -fx-padding: 20;
+}
+
+.add_pan {
+  
+  -fx-background-color:  linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); 
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+  -fx-background-radius: 15px;
+}
+
+.tab_pan {
+  -fx-background-color: whitesmoke;
+}
+

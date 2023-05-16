@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Uno_Bibliotheque">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/Uno_Bibliotheque.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

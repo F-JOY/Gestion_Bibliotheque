@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefWidth="1181.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.biblioController">
+   <children>
+      <AnchorPane prefHeight="627.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);">
+         <children>
+            <BorderPane layoutX="-7.0" prefHeight="658.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="25.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="reduire_btn" alignment="BOTTOM_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1058.0" mnemonicParsing="false" onMouseClicked="#reduire" onMouseEntered="#blue_color" onMouseExited="#initial_color" prefHeight="23.0" prefWidth="28.0" style="-fx-background-color: transparent;" textAlignment="CENTER" AnchorPane.rightAnchor="57.0">
+                           <graphic>
+                              <FontAwesomeIconView fx:id="minus_icon" glyphName="MINUS" size="13" strokeMiterLimit="0.0" textAlignment="JUSTIFY" />
+                           </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button fx:id="close_btn" layoutX="758.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#close" onMouseEntered="#red_color" onMouseExited="#initialclose_color" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CLOSE" size="15" fx:id="x_icon" />
+                           </graphic>
+                        </Button>
+                        <ImageView fx:id="max_min_btn" accessibleRole="BUTTON" fitHeight="15.0" fitWidth="18.0" layoutX="1100.0" layoutY="5.0" onMouseClicked="#max_min_screen" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="36.0">
+                           <image>
+                              <Image url="@../images/maximize_icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="4.0" />
+                     </BorderPane.margin>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIconView glyphName="USER" layoutX="64.0" layoutY="94.0" size="80" text="" />
+                              <Label layoutX="32.0" layoutY="107.0" text="Bienvenue">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="user_name_label" layoutX="54.0" layoutY="147.0" text="nom_utilisateur">
+                                 <font>
+                                    <Font name="Lucida Sans Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="acc_btn" layoutX="13.0" layoutY="203.0" mnemonicParsing="false" onMouseClicked="#show_acc" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Accueil">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <FontAwesomeIconView glyphName="HOME" layoutX="20.0" layoutY="231.0" size="25" />
+                              <Button fx:id="book_btn" layoutX="13.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#show_book" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Ouvrages">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="emprunt_btn" layoutX="13.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#show_emprunt" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text=" Emprunts">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="penalité_btn" layoutX="13.0" layoutY="359.0" mnemonicParsing="false" onMouseClicked="#show_penalité" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="    Pénalisations">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="17.0" layoutY="602.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+                              <Label fx:id="log_out_btn" layoutX="22.0" layoutY="615.0" onMouseClicked="#log_out" prefHeight="31.0" prefWidth="130.0" text="Deconnexion" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="22.0">
+                                 <font>
+                                    <Font name="Lucida Sans Demibold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="SIGN_OUT" size="25" wrappingWidth="24.214284896850586" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                              <Line endX="100.0" layoutX="76.0" layoutY="176.0" startX="-54.0" />
+                              <FontAwesomeIconView glyphName="BOOK" layoutX="21.0" layoutY="283.0" size="25" />
+                              <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="16.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/emprunt.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="18.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/penalisation.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane opacity="0.89" prefHeight="675.0" prefWidth="790.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="2.0" left="4.0" right="4.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <AnchorPane fx:id="Acc_pan" layoutX="12.0" layoutY="14.0" prefHeight="627.0" prefWidth="979.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="52.0" prefHeight="627.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="254.0" layoutY="39.0" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Espace Bibliothècaire" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="20.0">
+                                       <font>
+                                          <Font name="Arial Black" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox layoutX="40.0" layoutY="167.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="43.0">
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <AnchorPane maxWidth="200.0" prefHeight="115.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutX="7.0" layoutY="84.0" prefHeight="31.0" prefWidth="173.0" text="Nombre Ouvrages">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="totalOuvrage_label" layoutX="112.0" layoutY="14.0" prefHeight="28.0" prefWidth="74.0" text="1005 ">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <FontAwesomeIconView glyphName="BOOK" layoutX="14.0" layoutY="66.0" size="60" text="" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="200.0" prefHeight="115.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="totalEmprunt_label" layoutX="132.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="1005">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0" text="Total Emprunts">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="55.0" fitWidth="69.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/emprunt.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="200.0" prefHeight="115.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="totalRest_lable" layoutX="132.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="1005">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="7.0" layoutY="82.0" prefHeight="31.0" prefWidth="184.0" text="Totale Restitution">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <FontAwesomeIconView glyphName="DOWNLOAD" layoutX="24.0" layoutY="59.0" size="60" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </AnchorPane>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="115.0" prefWidth="709.0">
+                                             <children>
+                                                <AnchorPane maxWidth="200.0" prefHeight="115.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="totalRetard_lable" layoutX="132.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="1005">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="7.0" layoutY="82.0" prefHeight="31.0" prefWidth="184.0" text="Retard de Restitution">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <FontAwesomeIconView glyphName="DOWNLOAD" layoutX="30.0" layoutY="53.0" size="40" wrappingWidth="35.71428680419922" />
+                                                      <ImageView fitHeight="69.0" fitWidth="72.0" layoutX="13.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/cancel.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="200.0" prefHeight="115.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutX="14.0" layoutY="82.0" prefHeight="31.0" prefWidth="173.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="totalPenalité_label" layoutX="132.0" layoutY="14.0" prefHeight="28.0" prefWidth="54.0" text="1005">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="7.0" layoutY="82.0" prefHeight="31.0" prefWidth="184.0" text="Pénalisations">
+                                                         <font>
+                                                            <Font name="Arial Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="62.0" fitWidth="77.0" layoutX="22.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/penalisation.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </AnchorPane>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="60.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="book_pan" layoutY="-14.0" prefHeight="1000.0" prefWidth="1129.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="42.0" layoutY="103.0" prefHeight="520.0" prefWidth="885.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="46.0">
+                                 <children>
+                                    <JFXTabPane prefHeight="550.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <tabs>
+                                          <Tab text="Liste des Ouvrages                                                        ">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="190.0" layoutY="14.0" prefHeight="35.0" prefWidth="398.0" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-radius: 18px;" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0">
+                                                         <children>
+                                                            <TextField fx:id="rechercheOuvrage_txt" layoutX="2.0" layoutY="2.0" prefHeight="37.0" prefWidth="431.0" promptText="Recherche..." style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="1.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="15.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <FontAwesomeIconView fx:id="rechercheOuvrage_btn" accessibleRole="BUTTON" glyphName="SEARCH" layoutX="393.0" layoutY="24.0" onMouseClicked="#rechercheOuvrage" size="20" AnchorPane.rightAnchor="14.428571701049805">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </FontAwesomeIconView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <TableView fx:id="ouvrage_tab" layoutX="31.0" layoutY="60.0" prefHeight="415.0" prefWidth="903.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="60.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="isbn_col" prefWidth="150.0" text="ISBN" />
+                                                            <TableColumn fx:id="titre_col" prefWidth="150.0" text="Titre" />
+                                                            <TableColumn fx:id="nbExemplaire_col" prefWidth="155.0" text="Nombre d'exemplaires" />
+                                                            <TableColumn fx:id="prix_col" prefWidth="120.0" text="Prix" />
+                                                            <TableColumn fx:id="filiere_col" prefWidth="115.0" text="Filiere" />
+                                                            <TableColumn fx:id="specialité_col" prefWidth="109.0" text="Specialité" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab text="Ajouter Ouvrage                                                ">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="839.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="50.0" layoutY="28.0" prefHeight="373.0" prefWidth="740.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-width: 3px; -fx-border-radius: 12px;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                                                         <children>
+                                                            <Label layoutX="34.0" layoutY="99.0" prefHeight="23.0" prefWidth="87.0" text="Titre :" AnchorPane.leftAnchor="34.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="titreOuvrage_txt" layoutX="26.0" layoutY="121.0" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="383.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="30.0" layoutY="187.0" prefHeight="23.0" prefWidth="170.0" text="Discription:" AnchorPane.leftAnchor="30.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="617.0" layoutY="99.0" prefHeight="23.0" prefWidth="80.0" text="Année :" AnchorPane.rightAnchor="38.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="annéeOuvrage_txt" layoutX="593.0" layoutY="122.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.rightAnchor="25.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="397.0" layoutY="99.0" prefHeight="23.0" prefWidth="154.0" text="Maison Edition :" AnchorPane.rightAnchor="187.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="maisonEdit_txt" layoutX="385.0" layoutY="122.0" prefHeight="40.0" prefWidth="207.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.rightAnchor="143.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="397.0" layoutY="22.0" prefHeight="23.0" prefWidth="87.0" text="Auteur :" AnchorPane.rightAnchor="251.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="auteurOuvrage_txt" layoutX="385.0" layoutY="44.0" prefHeight="40.0" prefWidth="325.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.rightAnchor="25.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="570.0" layoutY="181.0" prefHeight="23.0" prefWidth="74.0" text="Prix :" AnchorPane.rightAnchor="91.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="prixOuvrage_txt" layoutX="554.0" layoutY="204.0" prefHeight="40.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.rightAnchor="25.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <Label layoutX="390.0" layoutY="181.0" prefHeight="23.0" prefWidth="139.0" text="Nb-Exemplaires:" AnchorPane.rightAnchor="206.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="nbExemplaire_txt" layoutX="382.0" layoutY="204.0" prefHeight="40.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.rightAnchor="197.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <TextArea fx:id="discOuvrage_txt" layoutX="32.0" layoutY="211.0" prefHeight="114.0" prefWidth="370.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px; -fx-padding: 5px;" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="386.0" />
+                                                            <Label alignment="CENTER" layoutX="29.0" layoutY="-8.0" prefHeight="17.0" prefWidth="145.0" style="-fx-background-color: white;" text="Information d'Ouvrage :">
+                                                               <font>
+                                                                  <Font name="Arial" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <AnchorPane layoutX="430.0" layoutY="285.0" prefHeight="40.0" prefWidth="154.0" style="-fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="201.0">
+                                                               <children>
+                                                                  <ComboBox fx:id="combobox_filiere" layoutX="2.0" layoutY="8.0" onAction="#getSpecialité" prefHeight="40.0" prefWidth="154.0" promptText="filiere..." style="-fx-background-color: transparent; -fx-background-radius: 15px; -fx-border-color: transparent;" visibleRowCount="100" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <padding>
+                                                                        <Insets left="10.0" />
+                                                                     </padding>
+                                                                  </ComboBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <Label layoutX="391.0" layoutY="263.0" prefHeight="23.0" prefWidth="74.0" text="Filiére :" AnchorPane.rightAnchor="270.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="567.0" layoutY="263.0" prefHeight="23.0" prefWidth="96.0" text="Spécialité :" AnchorPane.rightAnchor="72.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="34.0" layoutY="22.0" prefHeight="23.0" prefWidth="87.0" text="ISBN :">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="isbnOuvrage_txt" layoutX="26.0" layoutY="45.0" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="383.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <AnchorPane layoutX="603.0" layoutY="285.0" prefHeight="40.0" prefWidth="154.0" style="-fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="25.0">
+                                                               <children>
+                                                                  <ComboBox fx:id="combobox_specialite" layoutX="2.0" layoutY="8.0" prefHeight="40.0" prefWidth="154.0" promptText="specialité..." style="-fx-background-color: transparent; -fx-background-radius: 15px;" visibleRowCount="150" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <padding>
+                                                                        <Insets left="10.0" />
+                                                                     </padding>
+                                                                  </ComboBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <Button fx:id="ajouterOuvrage_btn" alignment="CENTER" layoutX="302.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#ajouterOuvrage" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 20px;" text="Ajouter" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="302.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="20.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" layoutX="255.0" layoutY="23.0" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Gestion des Ouvrages" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="emprunt_pan" prefHeight="627.0" prefWidth="979.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="10.0" layoutY="97.0" prefHeight="487.0" prefWidth="965.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0">
+                                 <children>
+                                    <JFXTabPane prefHeight="550.0" prefWidth="965.0" AnchorPane.bottomAnchor="-68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <tabs>
+                                          <Tab text="Liste des Emprunts                                                                      ">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="452.0" prefWidth="959.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="248.0" layoutY="14.0" prefHeight="35.0" prefWidth="470.0" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-radius: 18px;" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="247.0">
+                                                         <children>
+                                                            <TextField fx:id="rechercheEmprunt_txt" layoutX="2.0" layoutY="2.0" prefHeight="37.0" prefWidth="431.0" promptText="Recherche..." style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="1.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="15.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <FontAwesomeIconView fx:id="rechercheEmprunt_btn" accessibleRole="BUTTON" glyphName="SEARCH" layoutX="393.0" layoutY="24.0" onMouseClicked="#rechercheEmprunt" size="20" AnchorPane.rightAnchor="14.428571701049805">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </FontAwesomeIconView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <TableView fx:id="emprunt_tab" layoutX="43.0" layoutY="69.0" prefHeight="326.0" prefWidth="698.0" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="69.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="idEmprunt_col" prefWidth="100.0" text="_ID" />
+                                                            <TableColumn fx:id="dateEmprunt_col" prefWidth="100.0" text="Date_emprunt" />
+                                                            <TableColumn fx:id="idLecteurEmprunt_col" prefWidth="100.0" text="ID_Lecteur" />
+                                                            <TableColumn fx:id="codeOuvrage_col" prefWidth="100.0" text="Code_Ouvrage" />
+                                                            <TableColumn fx:id="dateRestEmprunt_col" prefWidth="100.0" text="Date_restitution" />
+                                                            <TableColumn fx:id="prolongationEmprunt_col" prefWidth="117.0" text="prolongation_btn" />
+                                                            <TableColumn fx:id="restEmprunt_col" prefWidth="83.0" text="restituer_btn" />
+                                                         </columns>
+                                                      </TableView>
+                                                      <Button fx:id="imprimerTotal_btn" layoutX="363.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#imprimerTotalEmprunt" prefHeight="42.0" prefWidth="233.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 20px;" text=" Imprimer" AnchorPane.leftAnchor="363.0" AnchorPane.rightAnchor="363.0">
+                                                         <font>
+                                                            <Font name="Arial Black" size="19.0" />
+                                                         </font>
+                                                         <graphic>
+                                                            <FontAwesomeIconView glyphName="PRINT" size="25" />
+                                                         </graphic>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab text="Ajouter Emprunt                                                      ">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="965.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="71.0" layoutY="24.0" prefHeight="362.0" prefWidth="780.0" style="-fx-background-color: transparent; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-border-width: 3px; -fx-border-radius: 12px;" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="70.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutX="226.0" layoutY="79.0" prefHeight="23.0" prefWidth="313.0" text="ID_Lecteur:" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="244.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="emprunt_idLecteur_txt" layoutX="213.0" layoutY="102.0" prefHeight="40.0" prefWidth="333.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="231.0">
+                                                               <font>
+                                                                  <Font name="Arial" size="14.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                            <HBox layoutX="71.0" layoutY="170.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="50.0">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label prefHeight="23.0" prefWidth="148.0" text="Code Ouvrage 1:">
+                                                                           <font>
+                                                                              <Font name="Arial Bold" size="17.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <TextField fx:id="emprun_ouvrage1_txt" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="14.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                        </TextField>
+                                                                     </children>
+                                                                     <HBox.margin>
+                                                                        <Insets right="40.0" />
+                                                                     </HBox.margin>
+                                                                  </VBox>
+                                                                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label prefHeight="23.0" prefWidth="148.0" text="Code Ouvrage 2:">
+                                                                           <font>
+                                                                              <Font name="Arial Bold" size="17.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <TextField fx:id="emprun_ouvrage2_txt" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="14.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                        </TextField>
+                                                                     </children>
+                                                                     <HBox.margin>
+                                                                        <Insets right="40.0" />
+                                                                     </HBox.margin>
+                                                                  </VBox>
+                                                                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label prefHeight="23.0" prefWidth="148.0" text="Code Ouvrage 3:">
+                                                                           <font>
+                                                                              <Font name="Arial Bold" size="17.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <TextField fx:id="emprun_ouvrage3_txt" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="14.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                        </TextField>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox layoutX="137.0" layoutY="275.0" prefHeight="63.0" prefWidth="387.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="119.0">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label prefHeight="23.0" prefWidth="149.0" text="Date d'emprunt :">
+                                                                           <font>
+                                                                              <Font name="Arial Bold" size="17.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <AnchorPane prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                                           <children>
+                                                                              <DatePicker fx:id="emprunt_date" layoutX="7.0" layoutY="3.0" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="6.0" />
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </children>
+                                                                     <HBox.margin>
+                                                                        <Insets right="40.0" />
+                                                                     </HBox.margin>
+                                                                  </VBox>
+                                                                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label prefHeight="23.0" prefWidth="145.0" text="Date restitution :">
+                                                                           <font>
+                                                                              <Font name="Arial Bold" size="17.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <TextField fx:id="rest_date" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 15px;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="14.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                        </TextField>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="23.0" prefHeight="32.0" prefWidth="778.0" style="-fx-text-fill: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Information sur l'Emprunt" textAlignment="CENTER" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="5.0">
+                                                               <font>
+                                                                  <Font name="Arial Black" size="22.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <HBox alignment="CENTER" layoutX="185.0" layoutY="411.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="191.0">
+                                                         <children>
+                                                            <Button fx:id="ajouterEmprunt_btn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#ajouterEmprunt" prefHeight="42.0" prefWidth="191.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 20px;" text=" Enregistrer" HBox.hgrow="ALWAYS">
+                                                               <font>
+                                                                  <Font name="Arial Black" size="19.0" />
+                                                               </font>
+                                                               <graphic>
+                                                                  <FontAwesomeIconView glyphName="SAVE" size="25" />
+                                                               </graphic>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                            <Button fx:id="imprimerEmprunt_btn" mnemonicParsing="false" onMouseClicked="#imprimerEmprunt" prefHeight="42.0" prefWidth="191.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff); -fx-background-radius: 20px;" text=" Imprimer" HBox.hgrow="ALWAYS">
+                                                               <font>
+                                                                  <Font name="Arial Black" size="19.0" />
+                                                               </font>
+                                                               <graphic>
+                                                                  <FontAwesomeIconView glyphName="PRINT" size="25" />
+                                                               </graphic>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" layoutX="255.0" layoutY="23.0" prefHeight="51.0" prefWidth="475.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Gestion des Empunts" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="rest_pan" layoutX="124.0" layoutY="56.0" onMouseClicked="#show_sanc" prefHeight="627.0" prefWidth="979.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="99.0" layoutY="88.0" prefHeight="627.0" prefWidth="979.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="41.0" layoutY="90.0" prefHeight="505.0" prefWidth="854.0" style="-fx-background-color: transparent; -fx-border-radius: 15px; -fx-border-width: 3px; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="40.0">
+                                       <children>
+                                          <TableView fx:id="penalite_tab" layoutX="102.0" layoutY="82.0" prefHeight="341.0" prefWidth="654.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="101.0">
+                                             <columns>
+                                                <TableColumn fx:id="idLecteurPenalité_col" prefWidth="123.0" text="ID_Lecteur" />
+                                                <TableColumn fx:id="nomLecteurPenalité_col" prefWidth="119.0" text="Nom" />
+                                                <TableColumn fx:id="prenomLecteurPenalité_col" prefWidth="95.0" text="Prénom" />
+                                                <TableColumn fx:id="debutPenalité_col" prefWidth="102.0" text="Debut_Pénalité" />
+                                                <TableColumn fx:id="finPenalité_col" prefWidth="110.0" text="Fin_Pénalité" />
+                                             </columns>
+                                          </TableView>
+                                          <Label alignment="CENTER" layoutX="184.0" layoutY="14.0" prefHeight="51.0" prefWidth="673.0" style="-fx-background-radius: 25px; -fx-text-fill: linear-gradient(from 25% 25% to 100% 100%, #adf7f2, #15aaff);" text="Un Abonné pénaliser doit etre sanctionner de l'emprunt" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                             <font>
+                                                <Font name="Arial Black" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label alignment="CENTER" layoutX="255.0" layoutY="23.0" prefHeight="51.0" prefWidth="488.0" style="-fx-background-color: #dfe6e5; -fx-background-radius: 25px;" text="Les Pénalisations" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="Arial Black" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
